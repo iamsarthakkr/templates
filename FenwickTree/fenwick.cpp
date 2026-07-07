@@ -8,7 +8,11 @@ class fenwick {
 
     explicit fenwick(int n, T v = T{}) : m_size(n), m_fenwick(n, T{}) {
         if(v != T{}) {
-            for(int i = 0; i < m_size; ++i) add(i, v);
+            for(int i = 0; i < m_size; ++i) {
+                m_fenwick[i] += v;
+                int j = i | (i + 1);
+                if(j < m_size) m_fenwick[j] += m_fenwick[i];
+            }
         }
     }
 

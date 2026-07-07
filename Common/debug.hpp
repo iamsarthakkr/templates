@@ -28,7 +28,7 @@ template <typename T,
           typename std::enable_if<std::is_arithmetic<T>::value &&
                                       !std::is_same<T, bool>::value,
                                   int>::type = 0>
-inline std::string to_string(T x) {
+inline std::string to_string(const T &x) {
     return std::to_string(x);
 }
 
